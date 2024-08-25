@@ -1,0 +1,14 @@
+architecture
+
+lib
+- app
+    - data
+        - local
+        - models
+        - providers
+        - repositories
+    - ui
+        - states
+        - task
+        - widgets
+		

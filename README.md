@@ -1,16 +1,31 @@
 # tasks
 
-A new Flutter project.
+A task management app that allows users to add, edit, delete and mark tasks as complete. The app should be functional on both Android and iOS.
 
-## Getting Started
+## flutter sdk
 
-This project is a starting point for a Flutter application.
+- Flutter SDK 3
 
-A few resources to get you started if this is your first Flutter project:
+## Development tool
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This projects uses code generator
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+flutter packages pub run build_runner build
+```
+
+- Resolves `json_serializable`
+
+```
+flutter pub run build_runner build --delete-conflicting-outputs
+```
+
+## flutter_launcher_icons
+
+Icon launcher generator
+
+- [Docs here](https://pub.dev/packages/flutter_launcher_icons)
+
+```
+flutter pub run flutter_launcher_icons:main
+```
