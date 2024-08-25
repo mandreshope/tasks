@@ -1,0 +1,43 @@
+name: Flutter CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  flutter_analyze:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/cirruslabs/flutter:latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        run: flutter doctor
+
+      - name: Clean the project
+        run: flutter clean
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze the project
+        run: |
+          flutter analyze --pub --no-fatal-infos --no-fatal-warnings --write=flutter_analysis.log
+          count=$(wc -l < flutter_analysis.log)
+          limit=1
+          echo "Checking if Flutter Analysis error count is greater than $limit"
+          if (( count > limit )); then 
+            echo "Error count is $count"
+            echo "Exiting..."
+            exit 1
+          fi
+
+      - name: Check code formatting
+        run: dart format -l 80 . --set-exit-if-changed
