@@ -5,11 +5,18 @@ part 'task_view_state.freezed.dart';
 
 @freezed
 class TaskViewState with _$TaskViewState {
-  const factory TaskViewState.status({
+  const factory TaskViewState({
     @Default(TaskViewStatus.init) TaskViewStatus status,
-  }) = TaskStatus;
-  const factory TaskViewState.tasks({@Default(<Task>[]) List<Task> tasks}) =
-      Tasks;
+    @Default([]) List<Task> tasks,
+    @Default(null) Task? task,
+    @Default(0) int tabIndex,
+    @Default(SortedBy.date) SortedBy sortedBy,
+  }) = _TaskViewState;
+}
+
+enum SortedBy {
+  date,
+  name,
 }
 
 enum TaskViewStatus {
@@ -17,4 +24,16 @@ enum TaskViewStatus {
   loading,
   success,
   error,
+}
+
+extension SortedByExt on SortedBy {
+  bool get isDate => this == SortedBy.date;
+  bool get isName => this == SortedBy.name;
+}
+
+extension TaskViewStatusExt on TaskViewStatus {
+  bool get isLoading => this == TaskViewStatus.loading;
+  bool get isSuccess => this == TaskViewStatus.success;
+  bool get isError => this == TaskViewStatus.error;
+  bool get isInit => this == TaskViewStatus.init;
 }

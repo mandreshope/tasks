@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tasks/app/data/models/task.dart';
+export 'package:isar/isar.dart';
+export 'package:isar_flutter_libs/isar_flutter_libs.dart';
 
 class IsarService {
   late Isar isar;
