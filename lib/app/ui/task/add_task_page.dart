@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/app/ui/states/task_view_model.dart';
+import 'package:tasks/app/ui/widgets/widgets.dart';
 
-class AddTaskPage extends ConsumerWidget {
+class AddTaskPage extends ConsumerStatefulWidget {
   const AddTaskPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _AddTaskPageState();
+}
+
+class _AddTaskPageState extends ConsumerState<AddTaskPage> {
+  late TextEditingController titleCntrl;
+  late TextEditingController contentCntrl;
+
+  @override
+  void initState() {
+    super.initState();
+    titleCntrl = TextEditingController();
+    contentCntrl = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    titleCntrl.dispose();
+    contentCntrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -20,14 +44,15 @@ class AddTaskPage extends ConsumerWidget {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: const Column(
+              child: Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('Title'),
                   ),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: titleCntrl,
+                    decoration: const InputDecoration(
                       hintText: 'Enter a title',
                       border: InputBorder.none,
                     ),
@@ -40,14 +65,15 @@ class AddTaskPage extends ConsumerWidget {
             ),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: const Column(
+              child: Column(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
                     child: Text('Details'),
                   ),
                   TextField(
-                    decoration: InputDecoration(
+                    controller: contentCntrl,
+                    decoration: const InputDecoration(
                       hintText: 'Add details',
                       border: InputBorder.none,
                     ),
@@ -66,7 +92,27 @@ class AddTaskPage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             TextButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (titleCntrl.text.isEmpty) {
+                  Snackbar.error(
+                    context: context,
+                    title: 'The title is required',
+                  );
+                  return;
+                }
+                await ref.read(taskViewModelProvider.notifier).addTask(
+                      title: titleCntrl.text,
+                      content: contentCntrl.text,
+                    );
+
+                WidgetsBinding.instance.addPostFrameCallback((_) async {
+                  Snackbar.success(
+                    context: context,
+                    title: 'The task is added',
+                  );
+                  Navigator.of(context).pop();
+                });
+              },
               child: const Text('Enregistrer'),
             ),
           ],

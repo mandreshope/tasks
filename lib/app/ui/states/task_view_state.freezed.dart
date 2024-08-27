@@ -16,43 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TaskViewState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TaskViewStatus status) status,
-    required TResult Function(List<Task> tasks) tasks,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskViewStatus status)? status,
-    TResult? Function(List<Task> tasks)? tasks,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskViewStatus status)? status,
-    TResult Function(List<Task> tasks)? tasks,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TaskStatus value) status,
-    required TResult Function(Tasks value) tasks,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TaskStatus value)? status,
-    TResult? Function(Tasks value)? tasks,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskStatus value)? status,
-    TResult Function(Tasks value)? tasks,
-    required TResult orElse(),
-  }) =>
+  TaskViewStatus get status => throw _privateConstructorUsedError;
+  List<Task> get tasks => throw _privateConstructorUsedError;
+  Task? get task => throw _privateConstructorUsedError;
+  int get tabIndex => throw _privateConstructorUsedError;
+  SortedBy get sortedBy => throw _privateConstructorUsedError;
+
+  /// Create a copy of TaskViewState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $TaskViewStateCopyWith<TaskViewState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +34,13 @@ abstract class $TaskViewStateCopyWith<$Res> {
   factory $TaskViewStateCopyWith(
           TaskViewState value, $Res Function(TaskViewState) then) =
       _$TaskViewStateCopyWithImpl<$Res, TaskViewState>;
+  @useResult
+  $Res call(
+      {TaskViewStatus status,
+      List<Task> tasks,
+      Task? task,
+      int tabIndex,
+      SortedBy sortedBy});
 }
 
 /// @nodoc
@@ -75,23 +55,62 @@ class _$TaskViewStateCopyWithImpl<$Res, $Val extends TaskViewState>
 
   /// Create a copy of TaskViewState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? tasks = null,
+    Object? task = freezed,
+    Object? tabIndex = null,
+    Object? sortedBy = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as TaskViewStatus,
+      tasks: null == tasks
+          ? _value.tasks
+          : tasks // ignore: cast_nullable_to_non_nullable
+              as List<Task>,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as Task?,
+      tabIndex: null == tabIndex
+          ? _value.tabIndex
+          : tabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      sortedBy: null == sortedBy
+          ? _value.sortedBy
+          : sortedBy // ignore: cast_nullable_to_non_nullable
+              as SortedBy,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$TaskStatusImplCopyWith<$Res> {
-  factory _$$TaskStatusImplCopyWith(
-          _$TaskStatusImpl value, $Res Function(_$TaskStatusImpl) then) =
-      __$$TaskStatusImplCopyWithImpl<$Res>;
+abstract class _$$TaskViewStateImplCopyWith<$Res>
+    implements $TaskViewStateCopyWith<$Res> {
+  factory _$$TaskViewStateImplCopyWith(
+          _$TaskViewStateImpl value, $Res Function(_$TaskViewStateImpl) then) =
+      __$$TaskViewStateImplCopyWithImpl<$Res>;
+  @override
   @useResult
-  $Res call({TaskViewStatus status});
+  $Res call(
+      {TaskViewStatus status,
+      List<Task> tasks,
+      Task? task,
+      int tabIndex,
+      SortedBy sortedBy});
 }
 
 /// @nodoc
-class __$$TaskStatusImplCopyWithImpl<$Res>
-    extends _$TaskViewStateCopyWithImpl<$Res, _$TaskStatusImpl>
-    implements _$$TaskStatusImplCopyWith<$Res> {
-  __$$TaskStatusImplCopyWithImpl(
-      _$TaskStatusImpl _value, $Res Function(_$TaskStatusImpl) _then)
+class __$$TaskViewStateImplCopyWithImpl<$Res>
+    extends _$TaskViewStateCopyWithImpl<$Res, _$TaskViewStateImpl>
+    implements _$$TaskViewStateImplCopyWith<$Res> {
+  __$$TaskViewStateImplCopyWithImpl(
+      _$TaskViewStateImpl _value, $Res Function(_$TaskViewStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TaskViewState
@@ -100,162 +119,50 @@ class __$$TaskStatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
+    Object? tasks = null,
+    Object? task = freezed,
+    Object? tabIndex = null,
+    Object? sortedBy = null,
   }) {
-    return _then(_$TaskStatusImpl(
+    return _then(_$TaskViewStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as TaskViewStatus,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$TaskStatusImpl implements TaskStatus {
-  const _$TaskStatusImpl({this.status = TaskViewStatus.init});
-
-  @override
-  @JsonKey()
-  final TaskViewStatus status;
-
-  @override
-  String toString() {
-    return 'TaskViewState.status(status: $status)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TaskStatusImpl &&
-            (identical(other.status, status) || other.status == status));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, status);
-
-  /// Create a copy of TaskViewState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TaskStatusImplCopyWith<_$TaskStatusImpl> get copyWith =>
-      __$$TaskStatusImplCopyWithImpl<_$TaskStatusImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TaskViewStatus status) status,
-    required TResult Function(List<Task> tasks) tasks,
-  }) {
-    return status(this.status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskViewStatus status)? status,
-    TResult? Function(List<Task> tasks)? tasks,
-  }) {
-    return status?.call(this.status);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskViewStatus status)? status,
-    TResult Function(List<Task> tasks)? tasks,
-    required TResult orElse(),
-  }) {
-    if (status != null) {
-      return status(this.status);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TaskStatus value) status,
-    required TResult Function(Tasks value) tasks,
-  }) {
-    return status(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TaskStatus value)? status,
-    TResult? Function(Tasks value)? tasks,
-  }) {
-    return status?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskStatus value)? status,
-    TResult Function(Tasks value)? tasks,
-    required TResult orElse(),
-  }) {
-    if (status != null) {
-      return status(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TaskStatus implements TaskViewState {
-  const factory TaskStatus({final TaskViewStatus status}) = _$TaskStatusImpl;
-
-  TaskViewStatus get status;
-
-  /// Create a copy of TaskViewState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TaskStatusImplCopyWith<_$TaskStatusImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$TasksImplCopyWith<$Res> {
-  factory _$$TasksImplCopyWith(
-          _$TasksImpl value, $Res Function(_$TasksImpl) then) =
-      __$$TasksImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<Task> tasks});
-}
-
-/// @nodoc
-class __$$TasksImplCopyWithImpl<$Res>
-    extends _$TaskViewStateCopyWithImpl<$Res, _$TasksImpl>
-    implements _$$TasksImplCopyWith<$Res> {
-  __$$TasksImplCopyWithImpl(
-      _$TasksImpl _value, $Res Function(_$TasksImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of TaskViewState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? tasks = null,
-  }) {
-    return _then(_$TasksImpl(
       tasks: null == tasks
           ? _value._tasks
           : tasks // ignore: cast_nullable_to_non_nullable
               as List<Task>,
+      task: freezed == task
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as Task?,
+      tabIndex: null == tabIndex
+          ? _value.tabIndex
+          : tabIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      sortedBy: null == sortedBy
+          ? _value.sortedBy
+          : sortedBy // ignore: cast_nullable_to_non_nullable
+              as SortedBy,
     ));
   }
 }
 
 /// @nodoc
 
-class _$TasksImpl implements Tasks {
-  const _$TasksImpl({final List<Task> tasks = const <Task>[]}) : _tasks = tasks;
+class _$TaskViewStateImpl implements _TaskViewState {
+  const _$TaskViewStateImpl(
+      {this.status = TaskViewStatus.init,
+      final List<Task> tasks = const [],
+      this.task = null,
+      this.tabIndex = 0,
+      this.sortedBy = SortedBy.date})
+      : _tasks = tasks;
 
+  @override
+  @JsonKey()
+  final TaskViewStatus status;
   final List<Task> _tasks;
   @override
   @JsonKey()
@@ -266,101 +173,70 @@ class _$TasksImpl implements Tasks {
   }
 
   @override
+  @JsonKey()
+  final Task? task;
+  @override
+  @JsonKey()
+  final int tabIndex;
+  @override
+  @JsonKey()
+  final SortedBy sortedBy;
+
+  @override
   String toString() {
-    return 'TaskViewState.tasks(tasks: $tasks)';
+    return 'TaskViewState(status: $status, tasks: $tasks, task: $task, tabIndex: $tabIndex, sortedBy: $sortedBy)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TasksImpl &&
-            const DeepCollectionEquality().equals(other._tasks, _tasks));
+            other is _$TaskViewStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            const DeepCollectionEquality().equals(other._tasks, _tasks) &&
+            (identical(other.task, task) || other.task == task) &&
+            (identical(other.tabIndex, tabIndex) ||
+                other.tabIndex == tabIndex) &&
+            (identical(other.sortedBy, sortedBy) ||
+                other.sortedBy == sortedBy));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tasks));
+  int get hashCode => Object.hash(runtimeType, status,
+      const DeepCollectionEquality().hash(_tasks), task, tabIndex, sortedBy);
 
   /// Create a copy of TaskViewState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TasksImplCopyWith<_$TasksImpl> get copyWith =>
-      __$$TasksImplCopyWithImpl<_$TasksImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(TaskViewStatus status) status,
-    required TResult Function(List<Task> tasks) tasks,
-  }) {
-    return tasks(this.tasks);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(TaskViewStatus status)? status,
-    TResult? Function(List<Task> tasks)? tasks,
-  }) {
-    return tasks?.call(this.tasks);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TaskViewStatus status)? status,
-    TResult Function(List<Task> tasks)? tasks,
-    required TResult orElse(),
-  }) {
-    if (tasks != null) {
-      return tasks(this.tasks);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TaskStatus value) status,
-    required TResult Function(Tasks value) tasks,
-  }) {
-    return tasks(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TaskStatus value)? status,
-    TResult? Function(Tasks value)? tasks,
-  }) {
-    return tasks?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TaskStatus value)? status,
-    TResult Function(Tasks value)? tasks,
-    required TResult orElse(),
-  }) {
-    if (tasks != null) {
-      return tasks(this);
-    }
-    return orElse();
-  }
+  _$$TaskViewStateImplCopyWith<_$TaskViewStateImpl> get copyWith =>
+      __$$TaskViewStateImplCopyWithImpl<_$TaskViewStateImpl>(this, _$identity);
 }
 
-abstract class Tasks implements TaskViewState {
-  const factory Tasks({final List<Task> tasks}) = _$TasksImpl;
+abstract class _TaskViewState implements TaskViewState {
+  const factory _TaskViewState(
+      {final TaskViewStatus status,
+      final List<Task> tasks,
+      final Task? task,
+      final int tabIndex,
+      final SortedBy sortedBy}) = _$TaskViewStateImpl;
 
+  @override
+  TaskViewStatus get status;
+  @override
   List<Task> get tasks;
+  @override
+  Task? get task;
+  @override
+  int get tabIndex;
+  @override
+  SortedBy get sortedBy;
 
   /// Create a copy of TaskViewState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TasksImplCopyWith<_$TasksImpl> get copyWith =>
+  _$$TaskViewStateImplCopyWith<_$TaskViewStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

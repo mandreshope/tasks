@@ -87,13 +87,14 @@ Task _taskDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Task();
-  object.content = reader.readStringOrNull(offsets[0]);
-  object.date = reader.readDateTime(offsets[1]);
+  final object = Task(
+    content: reader.readStringOrNull(offsets[0]),
+    date: reader.readDateTime(offsets[1]),
+    status: _TaskstatusValueEnumMap[reader.readByteOrNull(offsets[2])] ??
+        Status.completed,
+    title: reader.readString(offsets[3]),
+  );
   object.id = id;
-  object.status = _TaskstatusValueEnumMap[reader.readByteOrNull(offsets[2])] ??
-      Status.completed;
-  object.title = reader.readString(offsets[3]);
   return object;
 }
 

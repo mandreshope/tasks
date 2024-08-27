@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tasks/app/app.dart';
+import 'package:tasks/app/data/providers/providers.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -8,5 +10,11 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  runApp(const App());
+  await providerContainer.read(isarServiceProvider).init();
+  runApp(
+    UncontrolledProviderScope(
+      container: providerContainer,
+      child: const App(),
+    ),
+  );
 }
