@@ -21,7 +21,12 @@ class TaskViewModel extends StateNotifier<TaskViewState> {
     try {
       state = state.copyWith(status: TaskViewStatus.loading);
       final tasks = await taskRepository.getAll(sort: sort);
-      state = state.copyWith(status: TaskViewStatus.success);
+      if (tasks.isEmpty) {
+        state = state.copyWith(status: TaskViewStatus.empty);
+      } else {
+        state = state.copyWith(status: TaskViewStatus.success);
+      }
+
       state = state.copyWith(tasks: tasks);
     } catch (e) {
       state = state.copyWith(status: TaskViewStatus.error);
@@ -37,7 +42,11 @@ class TaskViewModel extends StateNotifier<TaskViewState> {
       state = state.copyWith(status: TaskViewStatus.loading);
       final tasks =
           await taskRepository.getAllByStatus(status: status, sort: sort);
-      state = state.copyWith(status: TaskViewStatus.success);
+      if (tasks.isEmpty) {
+        state = state.copyWith(status: TaskViewStatus.empty);
+      } else {
+        state = state.copyWith(status: TaskViewStatus.success);
+      }
       state = state.copyWith(tasks: tasks);
     } catch (e) {
       state = state.copyWith(status: TaskViewStatus.error);

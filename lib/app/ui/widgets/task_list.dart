@@ -51,6 +51,8 @@ class TaskList extends ConsumerWidget {
         return _buildTaskList(state.tasks, ref, context);
       case TaskViewStatus.error:
         return const Center(child: Text('Error'));
+      case TaskViewStatus.empty:
+        return const Center(child: Text('No task'));
     }
   }
 

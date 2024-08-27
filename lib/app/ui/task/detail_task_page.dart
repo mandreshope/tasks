@@ -84,6 +84,13 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
                       border: InputBorder.none,
                     ),
                     onChanged: (value) {
+                      if (titleCntrl.text.isEmpty) {
+                        Snackbar.error(
+                          context: context,
+                          title: 'The title is required',
+                        );
+                        return;
+                      }
                       _onChangedDebounced(
                         (val) {
                           ref

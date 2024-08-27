@@ -1,3 +1,8 @@
+## 0.0.2
+
+- documentation
+- unit test & widget test
+
 ## 0.0.1
 
 - Mark a Task as Complete
