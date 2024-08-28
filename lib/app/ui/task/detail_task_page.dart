@@ -62,22 +62,24 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
               final viewModel = ref.read(taskViewModelProvider.notifier);
               final id = task?.id;
               if (task == null || id == null) return;
-              await ref.read(taskViewModelProvider.notifier).deleteTask(id: id);
+
+              await viewModel.deleteTask(id: id);
+
+              if (!mounted) return; // Ensure the widget is still mounted
+
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                if (context.mounted) {
-                  // Afficher le Snackbar après la suppression
-                  Snackbar.error(
-                    context: context,
-                    title: 'The task is deleted',
-                    action: SnackBarAction(
-                      backgroundColor: Colors.green,
-                      textColor: Colors.white,
-                      label: 'Cancel',
-                      onPressed: () => viewModel.restoreTask(task: task),
-                    ),
-                  );
-                  Navigator.of(context).pop();
-                }
+                // Display the Snackbar and then pop the screen
+                Snackbar.error(
+                  context: context,
+                  title: 'The task is deleted',
+                  action: SnackBarAction(
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    label: 'Cancel',
+                    onPressed: () => viewModel.restoreTask(task: task),
+                  ),
+                );
+                Navigator.of(context).pop();
               });
             },
             icon: const Icon(
@@ -169,29 +171,26 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
               onPressed: () async {
                 final id = task?.id;
                 if (id == null || task == null) return;
+
                 if (task.status.isCompleted) {
                   ref
                       .read(taskViewModelProvider.notifier)
                       .markAsInProgress(id: id);
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Snackbar.success(
-                      context: context,
-                      title: 'The task is in progress',
-                    );
-                    Navigator.of(context).pop();
-                  });
                 } else {
                   ref
                       .read(taskViewModelProvider.notifier)
                       .markAsCompleted(id: id);
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Snackbar.success(
-                      context: context,
-                      title: 'The task is completed',
-                    );
-                    Navigator.of(context).pop();
-                  });
                 }
+
+                if (!mounted) return; // Ensure the widget is still mounted
+
+                Snackbar.success(
+                  context: context,
+                  title: task.status.isCompleted
+                      ? 'The task is in progress'
+                      : 'The task is completed',
+                );
+                Navigator.of(context).pop();
               },
               child: Text(
                 task?.status.isCompleted == true
