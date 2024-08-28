@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class Snackbar extends StatelessWidget {
   const Snackbar({super.key});
 
-  static error(
-      {required BuildContext context,
-      required String title,
-      SnackBarAction? action}) {
+  static error({
+    required BuildContext context,
+    required String title,
+    SnackBarAction? action,
+  }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         margin: const EdgeInsets.all(10),
@@ -19,10 +20,11 @@ class Snackbar extends StatelessWidget {
     );
   }
 
-  static success(
-      {required BuildContext context,
-      required String title,
-      SnackBarAction? action}) {
+  static success({
+    required BuildContext context,
+    required String title,
+    SnackBarAction? action,
+  }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         margin: const EdgeInsets.all(10),

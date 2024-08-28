@@ -6,11 +6,11 @@ A task management app that allows users to add, edit, delete and mark tasks as c
 
 - Flutter SDK 3 or higher
 
-## Install flutter sdk
+## Getting Started
 
-- MacOs
-  - use Brew
-  - `brew install --cask flutter`
+This project is a starting point for a Flutter application.
+
+- [Installation guide](https://docs.flutter.dev/get-started/install)
 
 ## Development tool
 
@@ -59,7 +59,7 @@ flutter test --coverage
 - MacOs or Linux
 
 ```batch
-lcov --remove coverage/lcov.info 'lib/*.g.dart' 'lib/*.gql.dart' 'lib/*.freezed.dart' -o coverage/lcov.info
+lcov --remove coverage/lcov.info 'lib/*.g.dart' 'lib/*.gql.dart' 'lib/*.freezed.dart' 'lib/*.mocks.dart' -o coverage/lcov.info
 ```
 
 - Windows
