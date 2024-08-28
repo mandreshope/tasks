@@ -18,7 +18,7 @@ VERSION=$(grep 'version:' pubspec.yaml | awk -F ': ' '{print $2}')
 # Build and rename function for APK
 build_and_rename_apk() {
   local flavor="$1"
-  flutter build apk
+  flutter build apk --no-tree-shake-icons
 
   # Determine the output directory based on the flavor
   OUTPUT_DIR="$PROJECT_PATH/build/app/outputs/flutter-apk"
