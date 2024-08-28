@@ -1,0 +1,7 @@
+targets:
+  $default:
+    builders:
+      mockito|mockBuilder:
+        enabled: True
+        generate_for:
+          - lib/app/data/mocks/**

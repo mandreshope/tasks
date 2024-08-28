@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tasks/app/data/models/task.dart';
 import 'package:tasks/app/ui/states/task_view_model.dart';
 import 'package:tasks/app/ui/widgets/widgets.dart';
 
@@ -46,6 +47,7 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
 
   @override
   Widget build(BuildContext context) {
+    final task = ref.watch(taskViewModelProvider).task;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -57,12 +59,33 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
         actions: [
           IconButton(
             onPressed: () async {
-              await ref.read(taskViewModelProvider.notifier).deleteTask();
-              WidgetsBinding.instance.addPostFrameCallback((_) async {
+              final viewModel = ref.read(taskViewModelProvider.notifier);
+              final id = task?.id;
+              if (task == null || id == null) return;
+
+              await viewModel.deleteTask(id: id);
+
+              if (!mounted) return; // Ensure the widget is still mounted
+
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                // Display the Snackbar and then pop the screen
+                Snackbar.error(
+                  context: context,
+                  title: 'The task is deleted',
+                  action: SnackBarAction(
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    label: 'Cancel',
+                    onPressed: () => viewModel.restoreTask(task: task),
+                  ),
+                );
                 Navigator.of(context).pop();
               });
             },
-            icon: const Icon(Icons.delete),
+            icon: const Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
           ),
         ],
       ),
@@ -84,6 +107,13 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
                       border: InputBorder.none,
                     ),
                     onChanged: (value) {
+                      if (titleCntrl.text.isEmpty) {
+                        Snackbar.error(
+                          context: context,
+                          title: 'The title is required',
+                        );
+                        return;
+                      }
                       _onChangedDebounced(
                         (val) {
                           ref
@@ -139,20 +169,34 @@ class _DetailTaskPageState extends ConsumerState<DetailTaskPage> {
           children: [
             TextButton(
               onPressed: () async {
-                final task = ref.read(taskViewModelProvider).task;
-                if (task == null) return;
-                await ref
-                    .read(taskViewModelProvider.notifier)
-                    .markAsCompleted(id: task.id);
-                WidgetsBinding.instance.addPostFrameCallback((_) {
-                  Snackbar.success(
-                    context: context,
-                    title: 'The task is completed',
-                  );
-                  Navigator.of(context).pop();
-                });
+                final id = task?.id;
+                if (id == null || task == null) return;
+
+                if (task.status.isCompleted) {
+                  ref
+                      .read(taskViewModelProvider.notifier)
+                      .markAsInProgress(id: id);
+                } else {
+                  ref
+                      .read(taskViewModelProvider.notifier)
+                      .markAsCompleted(id: id);
+                }
+
+                if (!mounted) return; // Ensure the widget is still mounted
+
+                Snackbar.success(
+                  context: context,
+                  title: task.status.isCompleted
+                      ? 'The task is in progress'
+                      : 'The task is completed',
+                );
+                Navigator.of(context).pop();
               },
-              child: const Text('Mark as completed'),
+              child: Text(
+                task?.status.isCompleted == true
+                    ? 'Mark as in progress'
+                    : 'Mark as completed',
+              ),
             ),
           ],
         ),

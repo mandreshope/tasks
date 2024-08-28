@@ -1,0 +1,15 @@
+# Set true if you allow pinned packages in your project.
+allow_pins: true
+# Exclude one or more paths from being scanned. Supports glob syntax.
+exclude:
+  - tests/**
+  - example/**
+  - '*_gql/**'
+# Ignore one or more packages.
+ignore:
+  - analyzer
+  - json_annotation
+  - gql
+  - gql_code_builder
+  - gql_exec
+  - gql_build

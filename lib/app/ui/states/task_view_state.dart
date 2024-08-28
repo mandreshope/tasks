@@ -24,6 +24,7 @@ enum TaskViewStatus {
   loading,
   success,
   error,
+  empty,
 }
 
 extension SortedByExt on SortedBy {
@@ -36,4 +37,5 @@ extension TaskViewStatusExt on TaskViewStatus {
   bool get isSuccess => this == TaskViewStatus.success;
   bool get isError => this == TaskViewStatus.error;
   bool get isInit => this == TaskViewStatus.init;
+  bool get isEmpty => this == TaskViewStatus.empty;
 }
