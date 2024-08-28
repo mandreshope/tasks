@@ -17,7 +17,7 @@ class TaskList extends ConsumerWidget {
     return _buildWidget(state, ref, context);
   }
 
-  Widget _buildTaskList(List<Task> tasks, WidgetRef ref, BuildContext context) {
+  Widget _buildTaskList(List<Task> tasks, WidgetRef ref) {
     return ListView.builder(
       itemCount: tasks.length,
       itemBuilder: (context, index) {
@@ -26,6 +26,15 @@ class TaskList extends ConsumerWidget {
           title: task.title,
           isComleted: task.status.isCompleted,
           onTap: () => _onTaskTap(task, ref, context),
+          toogleState: () {
+            final id = task.id;
+            if (id == null) return;
+            if (task.status.isCompleted) {
+              ref.read(taskViewModelProvider.notifier).markAsInProgress(id: id);
+            } else {
+              ref.read(taskViewModelProvider.notifier).markAsCompleted(id: id);
+            }
+          },
         );
       },
     );
@@ -48,7 +57,7 @@ class TaskList extends ConsumerWidget {
       case TaskViewStatus.init:
         return const Center(child: Text('No task'));
       case TaskViewStatus.success:
-        return _buildTaskList(state.tasks, ref, context);
+        return _buildTaskList(state.tasks, ref);
       case TaskViewStatus.error:
         return const Center(child: Text('Error'));
       case TaskViewStatus.empty:

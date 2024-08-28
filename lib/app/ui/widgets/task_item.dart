@@ -5,15 +5,21 @@ class TaskItem extends StatelessWidget {
     required this.title,
     this.onTap,
     this.isComleted = false,
+    this.toogleState,
     super.key,
   });
   final String title;
   final bool isComleted;
   final void Function()? onTap;
+  final void Function()? toogleState;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: IconButton(
+        onPressed: toogleState,
+        icon: Icon(isComleted ? Icons.check : Icons.radio_button_off),
+      ),
       title: Text(
         title,
         style: isComleted

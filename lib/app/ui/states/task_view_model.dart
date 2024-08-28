@@ -83,6 +83,22 @@ class TaskViewModel extends StateNotifier<TaskViewState> {
     }
   }
 
+  Future<void> restoreTask({required Task task}) async {
+    try {
+      final taskDto = TaskDto(
+        id: task.id,
+        title: task.title,
+        content: task.content,
+        date: task.date,
+        status: task.status,
+      );
+      await taskRepository.add(task: taskDto);
+      getTaskByTab(state.tabIndex, sort: state.sortedBy);
+    } catch (e) {
+      debugPrint('$e');
+    }
+  }
+
   Future<void> markAsCompleted({required int id}) async {
     try {
       final tasks = await taskRepository.markAsCompleted(id: id);
@@ -120,8 +136,8 @@ class TaskViewModel extends StateNotifier<TaskViewState> {
   }) async {
     try {
       final task = state.task;
-      if (task == null) return;
-      final id = task.id;
+      final id = task?.id;
+      if (id == null) return;
       final taskDto = TaskDto(
         title: title,
         content: content ?? state.task?.content,
@@ -135,11 +151,9 @@ class TaskViewModel extends StateNotifier<TaskViewState> {
     }
   }
 
-  Future<void> deleteTask() async {
+  Future<void> deleteTask({required int id}) async {
     try {
-      final task = state.task;
-      if (task == null) return;
-      await taskRepository.delete(id: task.id);
+      await taskRepository.delete(id: id);
       getTaskByTab(state.tabIndex, sort: state.sortedBy);
     } catch (e) {
       debugPrint('$e');

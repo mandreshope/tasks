@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Snackbar extends StatelessWidget {
   const Snackbar({super.key});
 
-  static error({required BuildContext context, required String title}) {
+  static error({required BuildContext context, required String title, SnackBarAction? action}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         margin: const EdgeInsets.all(10),
@@ -11,11 +11,12 @@ class Snackbar extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         backgroundColor: Colors.red,
         content: Text(title),
+        action: action,
       ),
     );
   }
 
-  static success({required BuildContext context, required String title}) {
+  static success({required BuildContext context, required String title, SnackBarAction? action}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         margin: const EdgeInsets.all(10),
@@ -23,6 +24,7 @@ class Snackbar extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         backgroundColor: Colors.green,
         content: Text(title),
+        action: action,
       ),
     );
   }

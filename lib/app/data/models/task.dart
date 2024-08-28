@@ -5,12 +5,13 @@ part 'task.g.dart';
 @collection
 class Task {
   Task({
+    this.id,
     required this.title,
     this.content,
     required this.date,
     required this.status,
   });
-  Id id = Isar.autoIncrement;
+  Id? id = Isar.autoIncrement;
   late String title;
   String? content;
   late DateTime date;
@@ -30,11 +31,13 @@ enum Status {
 
 class TaskDto {
   TaskDto({
+    this.id,
     required this.title,
     this.content,
     required this.date,
     required this.status,
   });
+  final int? id;
   final String title;
   final String? content;
   final DateTime date;

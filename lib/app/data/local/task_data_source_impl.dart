@@ -20,6 +20,7 @@ class TaskDataSourceImpl implements TaskDataSource {
     return isarService.isar.writeTxn(() async {
       await isarService.isar.tasks.put(
         Task(
+          id: task.id,
           title: task.title,
           content: task.title,
           date: task.date,
