@@ -121,3 +121,14 @@ Run this script in project root to create apk
 ## if keystore not exists
 
 copy key.properties and keystore.jks to /android/
+
+
+## Screenshots
+
+Screenshots demonstrating the application's features.
+
+| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/benchmarks/screen1.png" width="100%" /> | <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/benchmarks/screen1_list_task.png" width="100%" /> |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/benchmarks/screen1_all_list.png" width="100%" /> | <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/benchmarks/screen2_save.png" width="100%" />  |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/benchmarks/screen3_task_detail.png" width="100%" />  |
