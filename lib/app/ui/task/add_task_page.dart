@@ -113,7 +113,7 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
                   Navigator.of(context).pop();
                 });
               },
-              child: const Text('Enregistrer'),
+              child: const Text('Save'),
             ),
           ],
         ),
