@@ -126,8 +126,11 @@ copy key.properties and keystore.jks to /android/
 
 Screenshots demonstrating the application's features.
 
-| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/screenshots/screen1.png" width="100%" />             | <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/screenshots/screen1_list_task.png" width="100%" /> |
-| -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/screenshots/screen1_all_list.png" width="100%" />    | <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/screenshots/screen2_save.png" width="100%" />      |
-| ----------------------------------------------------------------------------------------------------------------                       | ---------------------------------------------------------------------------------------------------------------                      |
-| <img src="https://raw.githubusercontent.com/mandreshope/tasks/main/.github/assets/screenshots/screen3_task_detail.png" width="100%" /> |
+<p align="center">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1.png?raw=true" width="350" title="hover text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1_all_list.png?raw=true" width="350" alt="accessibility text">
+</p>
+<p align="center">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen2_save.png?raw=true" width="350" title="hover text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen3_task_detail.png?raw=true" width="350" alt="accessibility text">
+</p>
