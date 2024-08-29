@@ -127,10 +127,12 @@ copy key.properties and keystore.jks to /android/
 Screenshots demonstrating the application's features.
 
 <p align="center">
-  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1.png?raw=true" width="350" title="hover text">
-  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1_all_list.png?raw=true" width="350" alt="accessibility text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1.png?raw=true" width="250" title="Task list">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen2_save.png?raw=true" width="250" title="Add a new task">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1_list_task.png?raw=true" width="250" title="New task added">
 </p>
 <p align="center">
-  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen2_save.png?raw=true" width="350" title="hover text">
-  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen3_task_detail.png?raw=true" width="350" alt="accessibility text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen1_all_list.png?raw=true" width="250" title="hover text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen3_task_detail.png?raw=true" width="250" title="hover text">
+  <img src="https://github.com/mandreshope/tasks/blob/master/assets/screenshots/screen3_task_detail_delete.png?raw=true" width="250" alt="accessibility text">
 </p>
